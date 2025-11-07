@@ -28,9 +28,9 @@ mapreduce-worker:latest
 _____________________________
 bash<br>
 chmod +x ./run_experiment.sh<br>
-./run_experiment.sh <n>
+./run_experiment.sh n
 _____________________________
-Replace <n> with the number of workers (1, 2, 4, or 8 only). 
+Replace n with the number of workers (1, 2, 4, or 8 only). 
 Please note that in step 3 and 4 you only need the chmod +x command the first time you try to run the project after downloading it.
 
 5. Cleanup
@@ -108,5 +108,5 @@ docker compose -f docker-compose_${NUM}.yml down
 - docker-compose_4.yml
 - docker-compose_8.yml
 The following bash script has been created to automate selection: 
-./run_experiment.sh <n>
-where <n> is the number of workers.
+./run_experiment.sh n
+where n is the number of workers.
