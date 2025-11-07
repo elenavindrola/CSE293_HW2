@@ -8,15 +8,16 @@ A. Deployment
 Please make sure the Docker daemon is running before running the bash scripts
 
 2. Clone the Repository
-bash
-git clone https://github.com/elenavindrola/CSE293_HW2.git
+____________________________________________________________
+bash<br>
+git clone https://github.com/elenavindrola/CSE293_HW2.git<br>
 cd CSE293_HW2
-
-3. Build Docker Images
+____________________________________________________________
+4. Build Docker Images
 Make the build script executable and build both the coordinator and worker images:
 ____________________
-bash
-chmod +x ./build.sh
+bash<br>
+chmod +x ./build.sh<br>
 ./build.sh
 ____________________
 This creates two Docker images:
@@ -25,8 +26,8 @@ mapreduce-worker:latest
 
 4. Spin up the containers and run Map Reduce:
 _____________________________
-bash
-chmod +x ./run_experiment.sh
+bash<br>
+chmod +x ./run_experiment.sh<br>
 ./run_experiment.sh <n>
 _____________________________
 Replace <n> with the number of workers (1, 2, 4, or 8 only). 
@@ -38,7 +39,7 @@ intermediate/: map result files
 output/: reduce result files
 - After completing the mapreduce, it is recommended to run the following command to remove the images created by this project:
 __________________________________________________
-bash
+bash<br>
 docker rmi mapreduce-worker mapreduce-coordinator
 ___________________________________________________
 - It is possible to also clean the build history through the Docker Desktop interface.
