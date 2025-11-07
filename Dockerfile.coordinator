@@ -1,0 +1,20 @@
+# Dockerfile.coordinator - Coordinator Container Image
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install required Python packages
+RUN pip install --no-cache-dir rpyc ujson
+
+# Copy coordinator application
+COPY coordinator.py /app/
+
+# Create directory for downloaded data
+RUN mkdir -p /app/txt
+
+# Expose RPyC port
+EXPOSE 18860
+
+# Default command (dataset URL can be overridden)
+CMD ["python", "coordinator.py", "https://mattmahoney.net/dc/enwik9.zip"]

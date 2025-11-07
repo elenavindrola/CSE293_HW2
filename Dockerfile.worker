@@ -1,0 +1,14 @@
+# Dockerfile.worker - Worker Container Image
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install required Python packages
+RUN pip install --no-cache-dir rpyc ujson
+
+# Copy worker application
+COPY worker.py /app/
+
+# Run worker service
+CMD ["python", "worker.py"]

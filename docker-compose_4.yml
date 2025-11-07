@@ -1,0 +1,69 @@
+services:
+  coordinator:
+    container_name: coor
+    hostname: coordinator
+    image: mapreduce-coordinator:latest
+    environment:
+      - NUM_WORKERS=4
+      - DATASET_URL=https://mattmahoney.net/dc/enwik9.zip
+      - MAP_CHUNKS_PER_WORKER=8
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./txt:/app/txt
+      - ./intermediate:/app/intermediate
+      - ./output:/app/output
+    networks:
+      - mapreduce-net
+    depends_on:
+      - worker-1
+      - worker-2
+      - worker-3
+      - worker-4
+
+  worker-1:
+    image: mapreduce-worker:latest
+    container_name: worker-1
+    hostname: worker-1
+    volumes:
+      - ./txt:/app/txt
+      - ./intermediate:/app/intermediate
+      - ./output:/app/output
+    networks:
+      - mapreduce-net
+
+  worker-2:
+    image: mapreduce-worker:latest
+    container_name: worker-2
+    hostname: worker-2
+    volumes:
+      - ./txt:/app/txt
+      - ./intermediate:/app/intermediate
+      - ./output:/app/output
+    networks:
+      - mapreduce-net
+
+  worker-3:
+    image: mapreduce-worker:latest
+    container_name: worker-3
+    hostname: worker-3
+    volumes:
+      - ./txt:/app/txt
+      - ./intermediate:/app/intermediate
+      - ./output:/app/output
+    networks:
+      - mapreduce-net
+
+  worker-4:
+    image: mapreduce-worker:latest
+    container_name: worker-4
+    hostname: worker-4
+    volumes:
+      - ./txt:/app/txt
+      - ./intermediate:/app/intermediate
+      - ./output:/app/output
+    networks:
+      - mapreduce-net
+
+networks:
+  mapreduce-net:
+    driver: bridge
